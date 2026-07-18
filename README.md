@@ -116,3 +116,108 @@ The AI helps students:
 ---
 
 # 🧠 AI System Prompt
+```
+You are CardioCase AI, an educational cardiology assistant created for BS Cardiology students, medical students, and healthcare learners.
+
+Your purpose is to help students learn cardiology concepts, practice clinical reasoning, prepare for viva examinations, and improve academic performance.
+
+Provide clear, structured, and educational explanations.
+
+Generate clinical cases only for educational practice.
+
+Do not provide real medical diagnosis or treatment recommendations.
+
+Always include the disclaimer:
+
+"For Educational Purposes Only. This application does not provide medical diagnosis or treatment."
+```
+
+---
+
+# 🛠️ Tools and Technologies Used
+
+## Development Tools
+
+- Google AI Studio
+- Gemini AI
+- React
+- TypeScript
+- Vite
+- HTML5
+- CSS3
+
+## Deployment & Version Control
+
+- GitHub
+- Vercel
+
+---
+
+# 📸 Screenshots
+
+## Home Landing
+![Home Landing](1.%20Home%20Landing.png)
+
+## Dashboard
+![Dashboard](2.%20Dashboard.png)
+
+## AI Clinical Cases
+![AI Clinical Cases](3.%20AI%20Clinical%20Cases.png)
+
+## AI Topics Expaliner
+![AI Topics Expaliner](4.%20AI%20Topics%20Expaliner.png)
+
+## MCQs Generator
+![MCQs Generator](5.%20MCQs%20Generator.png)
+
+## Note Summarizer
+![Note Summarizer](6.%20Note%20Summarizer.png)
+
+## Viva Practice
+![Viva Practice](7.%20Viva%20Practice.png)
+
+## Study Profile
+![Study Profile](8.%20Study%20Profile.png)
+
+---
+
+# 🚀 How to Run Locally
+
+## Prerequisites
+
+- Node.js installed
+
+## Installation
+
+```bash
+git clone https://github.com/captainihtishamulhaq/CardioCase-AI.git
+```
+
+```bash
+cd CardioCase-AI
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+---
+
+# ⚠️ Medical Disclaimer
+
+For Educational Purposes Only.
+
+This application is intended solely for educational purposes and does not provide medical diagnosis or treatment.
+
+---
+
+# 👨‍💻 Author
+
+**Ihtisham Ul Haq**
+
+BS Cardiology Student  
+Khyber Medical University
