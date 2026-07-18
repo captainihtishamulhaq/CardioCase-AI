@@ -217,11 +217,13 @@ This application is intended solely for educational purposes and does not provid
 
 # 👨‍💻 Author
 
+**Ihtisham Ul Haq**
+
+BS Cardiology Student  
+Khyber Medical University
+
 ---
 
 # 🔗 GitHub Repository
 
 https://github.com/captainihtishamulhaq/CardioCase-AI
-
-BS Cardiology Student  
-Khyber Medical University
