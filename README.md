@@ -24,7 +24,7 @@ CardioCase AI provides an interactive AI learning companion that makes cardiolog
 
 # 🌐 Live Application
 
-https://cardio-case-ai.vercel.app
+**Live Demo:** <https://cardio-case-ai.vercel.app>
 
 ---
 
@@ -217,7 +217,11 @@ This application is intended solely for educational purposes and does not provid
 
 # 👨‍💻 Author
 
-**Ihtisham Ul Haq**
+---
+
+# 🔗 GitHub Repository
+
+https://github.com/captainihtishamulhaq/CardioCase-AI
 
 BS Cardiology Student  
 Khyber Medical University
