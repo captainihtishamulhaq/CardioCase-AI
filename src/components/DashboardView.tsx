@@ -18,9 +18,10 @@ import { ScreenType, UserProfile } from '../types';
 interface DashboardViewProps {
   profile: UserProfile;
   onNavigate: (screen: ScreenType) => void;
+  isGuest?: boolean;
 }
 
-export default function DashboardView({ profile, onNavigate }: DashboardViewProps) {
+export default function DashboardView({ profile, onNavigate, isGuest = false }: DashboardViewProps) {
   const cards = [
     {
       id: 'clinical_case',
@@ -86,6 +87,28 @@ export default function DashboardView({ profile, onNavigate }: DashboardViewProp
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-6 md:py-10">
+      {isGuest && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-amber-800 shadow-sm"
+        >
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+            </span>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-amber-900 font-display">Guest Mode – Demonstration Only</p>
+              <p className="text-[11px] text-amber-700/90 mt-0.5">You have full, unrestricted access to all medical simulator modules, quizzes, explainer guides, and grading rubrics.</p>
+            </div>
+          </div>
+          <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 shrink-0 self-start sm:self-center">
+            UNRESTRICTED EVALUATION
+          </span>
+        </motion.div>
+      )}
+
       {/* Welcome banner */}
       <div className="bg-linear-to-r from-blue-700 to-indigo-800 rounded-3xl p-6 md:p-8 text-white mb-10 shadow-lg relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-10 translate-x-12 translate-y-6">

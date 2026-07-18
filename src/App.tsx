@@ -29,14 +29,19 @@ const DEFAULT_PROFILE: UserProfile = {
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<ScreenType>('home');
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isGuest, setIsGuest] = useState<boolean>(false);
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
 
   // Load state from localStorage on startup
   useEffect(() => {
     const storedAuth = localStorage.getItem('cardiocase_auth');
     const storedProfile = localStorage.getItem('cardiocase_profile');
+    const storedGuest = localStorage.getItem('cardiocase_is_guest');
     if (storedAuth === 'true') {
       setIsLoggedIn(true);
+    }
+    if (storedGuest === 'true') {
+      setIsGuest(true);
     }
     if (storedProfile) {
       try {
@@ -55,7 +60,9 @@ export default function App() {
 
   const handleLoginSuccess = (email: string, fullName: string, institution: string) => {
     setIsLoggedIn(true);
+    setIsGuest(false);
     localStorage.setItem('cardiocase_auth', 'true');
+    localStorage.removeItem('cardiocase_is_guest');
     const updated = {
       ...profile,
       email,
@@ -67,9 +74,27 @@ export default function App() {
     setCurrentScreen('dashboard');
   };
 
+  const handleContinueAsGuest = () => {
+    setIsLoggedIn(true);
+    setIsGuest(true);
+    localStorage.setItem('cardiocase_auth', 'true');
+    localStorage.setItem('cardiocase_is_guest', 'true');
+    const updated = {
+      ...profile,
+      email: 'guest@cardiocase.ai',
+      fullName: 'Guest Learner',
+      institution: 'Demonstration University',
+      streakDays: profile.streakDays === 0 ? 1 : profile.streakDays
+    };
+    saveProfileState(updated);
+    setCurrentScreen('dashboard');
+  };
+
   const handleLogout = () => {
     setIsLoggedIn(false);
+    setIsGuest(false);
     localStorage.removeItem('cardiocase_auth');
+    localStorage.removeItem('cardiocase_is_guest');
     setCurrentScreen('home');
   };
 
@@ -164,9 +189,9 @@ export default function App() {
       case 'home':
         return <HomeView onNavigate={handleNavigation} isLoggedIn={isLoggedIn} />;
       case 'login':
-        return <LoginView onLoginSuccess={handleLoginSuccess} onNavigate={handleNavigation} />;
+        return <LoginView onLoginSuccess={handleLoginSuccess} onNavigate={handleNavigation} onContinueAsGuest={handleContinueAsGuest} />;
       case 'dashboard':
-        return <DashboardView profile={profile} onNavigate={handleNavigation} />;
+        return <DashboardView profile={profile} onNavigate={handleNavigation} isGuest={isGuest} />;
       case 'clinical_case':
         return <ClinicalCaseView onAddXp={addStudyXp} onIncrementCases={incrementCases} />;
       case 'topic_explainer':

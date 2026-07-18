@@ -6,9 +6,10 @@ import { ScreenType } from '../types';
 interface LoginViewProps {
   onLoginSuccess: (email: string, fullName: string, institution: string) => void;
   onNavigate: (screen: ScreenType) => void;
+  onContinueAsGuest: () => void;
 }
 
-export default function LoginView({ onLoginSuccess, onNavigate }: LoginViewProps) {
+export default function LoginView({ onLoginSuccess, onNavigate, onContinueAsGuest }: LoginViewProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
@@ -180,6 +181,18 @@ export default function LoginView({ onLoginSuccess, onNavigate }: LoginViewProps
             {isRegistering ? 'Create Free Student Account' : 'Secure Log In'}
             <ArrowRight className="w-4 h-4" />
           </button>
+
+          {!isRegistering && (
+            <button
+              id="btn-login-guest"
+              type="button"
+              onClick={onContinueAsGuest}
+              className="w-full py-3 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl font-semibold shadow-sm flex items-center justify-center gap-2 transition-all hover:translate-y-[-1px] cursor-pointer mt-3"
+            >
+              Continue as Guest
+              <ArrowRight className="w-4 h-4 text-slate-400" />
+            </button>
+          )}
         </form>
 
         <div className="mt-8 pt-6 border-t border-slate-100 text-center">
